@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <div class="home"></div>
+  <button @click="connect">Click me</button>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import { io } from "socket.io-client";
 
 export default {
   name: "Home",
-  components: {
-    HelloWorld
+  methods: {
+    connect() {
+      console.log("connecting");
+      const socket = io("http://localhost:5005/");
+      console.log("socket", socket);
+      // // socket.on("bryan", arg => {
+      // //   console.log(arg); // world
+      // });
+    }
   }
 };
 </script>
