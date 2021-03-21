@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Alert />
     <button @click="connect">Click me</button>
     <Board />
   </div>
@@ -9,11 +10,13 @@
 // @ is an alias to /src
 import { io } from 'socket.io-client'
 import Board from '../components/Board.vue'
+import Alert from '../components/Alert.vue'
 
 export default {
   name: 'Home',
   components: {
     Board,
+    Alert,
   },
   methods: {
     connect() {
