@@ -1,3 +1,3 @@
 <template>
-  <router-view />
+  <div>Alert</div>
 </template>

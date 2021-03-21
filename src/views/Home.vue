@@ -1,21 +1,27 @@
 <template>
-  <div class="home"></div>
-  <button @click="connect">Click me</button>
+  <div class="home">
+    <button @click="connect">Click me</button>
+    <Board />
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import { io } from 'socket.io-client'
+import Board from '../components/Board.vue'
 
 export default {
   name: 'Home',
+  components: {
+    Board,
+  },
   methods: {
     connect() {
       console.log('connecting')
       const socket = io('http://localhost:5002/')
       console.log('socket', socket)
-      socket.on('bryan', (arg) => {
-        console.log(arg) // world
+      socket.on('GAME_START', (arg) => {
+        console.log('GAME STARTED!!!', arg)
       })
     },
   },
