@@ -7,12 +7,12 @@
         :key="`row${index}`"
       >
         <div
-          class="flex justify-center items-center h-16 w-16 bg-gray-500 p-8"
+          class="flex justify-center items-center cursor-pointer h-16 w-16 bg-gray-500 p-8"
           v-for="cell in row"
           :key="cell.position"
           @click="cellClick(cell.position)"
         >
-          {{ cell.position }}
+          {{ cell.mark }}
         </div>
       </div>
     </div>
@@ -21,7 +21,8 @@
 
 <script>
 import { onMounted } from 'vue'
-import { getGrid, grid } from '../game/grid.js'
+import { getGrid, grid, markCell } from '../game/grid.js'
+import { setError, setMessage } from '../game/alert.js'
 
 export default {
   setup() {
@@ -29,7 +30,9 @@ export default {
       grid.value = getGrid()
     })
     const cellClick = (position) => {
-      console.log(position)
+      const result = markCell(position, 'X')
+      if (!result) setError("You can't play here!")
+      else setMessage('x played on position 12')
     }
     return {
       grid,
