@@ -12,11 +12,11 @@ export default {
   methods: {
     connect() {
       console.log('connecting')
-      const socket = io('http://localhost:5005/')
+      const socket = io('http://localhost:5002/')
       console.log('socket', socket)
-      // // socket.on("bryan", arg => {
-      // //   console.log(arg); // world
-      // });
+      socket.on('bryan', (arg) => {
+        console.log(arg) // world
+      })
     },
   },
 }
